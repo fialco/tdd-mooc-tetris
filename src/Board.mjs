@@ -12,6 +12,10 @@ export class Board {
     this.falling = true;
   }
 
+  tick() {
+    return;
+  }
+
   toString() {
     let s = "";
     for (let row = 0; row < this.height; row++) {
