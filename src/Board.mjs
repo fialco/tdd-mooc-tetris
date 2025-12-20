@@ -1,14 +1,16 @@
 class MovableShape {
+  shape;
   row;
   col;
 
-  constructor(row, col) {
+  constructor(shape, row, col) {
+    this.shape = shape;
     this.row = row;
     this.col = col;
   }
 
   moveDown() {
-    return new MovableShape(this.row + 1, this.col);
+    return new MovableShape(this.shape, this.row + 1, this.col);
   }
 }
 
@@ -26,7 +28,7 @@ export class Board {
     if (this.#falling) {
       throw new Error("already falling");
     }
-    this.#falling = new MovableShape(0, 1);
+    this.#falling = new MovableShape(piece, 0, 1);
   }
 
   tick() {
@@ -38,7 +40,7 @@ export class Board {
     for (let row = 0; row < this.#height; row++) {
       for (let col = 0; col < this.#width; col++) {
         if (this.#falling && row === this.#falling.row && col === this.#falling.col) {
-          s += "X";
+          s += this.#falling.shape;
         } else {
           s += ".";
         }
