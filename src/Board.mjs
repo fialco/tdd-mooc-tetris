@@ -13,13 +13,13 @@ class MovableShape {
 }
 
 export class Board {
-  width;
-  height;
+  #width;
+  #height;
   #falling = null;
 
   constructor(width, height) {
-    this.width = width;
-    this.height = height;
+    this.#width = width;
+    this.#height = height;
   }
 
   drop(piece) {
@@ -35,8 +35,8 @@ export class Board {
 
   toString() {
     let s = "";
-    for (let row = 0; row < this.height; row++) {
-      for (let col = 0; col < this.width; col++) {
+    for (let row = 0; row < this.#height; row++) {
+      for (let col = 0; col < this.#width; col++) {
         if (this.#falling && row === this.#falling.row && col === this.#falling.col) {
           s += "X";
         } else {
