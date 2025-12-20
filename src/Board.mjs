@@ -23,6 +23,9 @@ export class Board {
   }
 
   drop(piece) {
+    if (this.falling) {
+      throw new Error("already falling");
+    }
     this.falling = new MovableShape(0, 1);
   }
 
