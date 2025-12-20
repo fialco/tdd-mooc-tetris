@@ -1,3 +1,13 @@
+class MovableShape {
+  row;
+  col;
+
+  constructor(row, col) {
+    this.row = row;
+    this.col = col;
+  }
+}
+
 export class Board {
   width;
   height;
