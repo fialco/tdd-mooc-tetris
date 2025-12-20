@@ -15,7 +15,7 @@ class MovableShape {
 export class Board {
   width;
   height;
-  falling = null;
+  #falling = null;
 
   constructor(width, height) {
     this.width = width;
@@ -23,21 +23,21 @@ export class Board {
   }
 
   drop(piece) {
-    if (this.falling) {
+    if (this.#falling) {
       throw new Error("already falling");
     }
-    this.falling = new MovableShape(0, 1);
+    this.#falling = new MovableShape(0, 1);
   }
 
   tick() {
-    this.falling = this.falling.moveDown();
+    this.#falling = this.#falling.moveDown();
   }
 
   toString() {
     let s = "";
     for (let row = 0; row < this.height; row++) {
       for (let col = 0; col < this.width; col++) {
-        if (this.falling && row === this.falling.row && col === this.falling.col) {
+        if (this.#falling && row === this.#falling.row && col === this.#falling.col) {
           s += "X";
         } else {
           s += ".";
