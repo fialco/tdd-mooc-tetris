@@ -7,6 +7,10 @@ export class Board {
     this.height = height;
   }
 
+  drop(piece) {
+    return;
+  }
+
   toString() {
     let s = "";
     for (let row = 0; row < this.height; row++) {
