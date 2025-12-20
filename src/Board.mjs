@@ -6,6 +6,10 @@ class MovableShape {
     this.row = row;
     this.col = col;
   }
+
+  moveDown() {
+    return new MovableShape(this.row + 1, this.col);
+  }
 }
 
 export class Board {
@@ -19,18 +23,18 @@ export class Board {
   }
 
   drop(piece) {
-    this.falling = true;
+    this.falling = new MovableShape(0, 1);
   }
 
   tick() {
-    return;
+    this.falling = this.falling.moveDown();
   }
 
   toString() {
     let s = "";
     for (let row = 0; row < this.height; row++) {
       for (let col = 0; col < this.width; col++) {
-        if (this.falling && row === 0 && col === 1) {
+        if (this.falling && row === this.falling.row && col === this.falling.col) {
           s += "X";
         } else {
           s += ".";
