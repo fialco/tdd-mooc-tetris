@@ -35,6 +35,10 @@ export class Board {
     this.#falling = this.#falling.moveDown();
   }
 
+  hasFalling() {
+    return this.#falling !== null;
+  }
+
   toString() {
     let s = "";
     for (let row = 0; row < this.#height; row++) {
