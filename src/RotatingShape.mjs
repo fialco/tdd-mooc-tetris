@@ -11,6 +11,14 @@ export class RotatingShape {
     return shape.replaceAll(" ", "") + "\n";
   }
 
+  width() {
+    return this.#shape[0].length;
+  }
+
+  height() {
+    return this.#shape.length;
+  }
+
   toString() {
     return shapeToString(this);
   }
