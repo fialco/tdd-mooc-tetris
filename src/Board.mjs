@@ -32,7 +32,13 @@ export class Board {
   }
 
   tick() {
-    this.#falling = this.#falling.moveDown();
+    const attempt = this.#falling.moveDown();
+
+    if (attempt.row >= this.#height) {
+      this.#falling = null;
+    } else {
+      this.#falling = attempt;
+    }
   }
 
   hasFalling() {
