@@ -41,7 +41,7 @@ export class Board {
   tick() {
     const attempt = this.#falling.moveDown();
 
-    if (attempt.row >= this.#height) {
+    if (attempt.row >= this.#height || this.#immobile[attempt.row][attempt.col] !== EMPTY) {
       this.#immobile[this.#falling.row][this.#falling.col] = this.#falling.shape;
       this.#falling = null;
     } else {
