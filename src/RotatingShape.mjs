@@ -1,3 +1,5 @@
+import { shapeToString } from "./shapes.mjs";
+
 export class RotatingShape {
   #shape;
 
@@ -7,5 +9,9 @@ export class RotatingShape {
 
   static fromString(shape) {
     return shape.replaceAll(" ", "") + "\n";
+  }
+
+  toString() {
+    return shapeToString(this);
   }
 }
