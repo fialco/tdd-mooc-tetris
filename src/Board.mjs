@@ -1,3 +1,5 @@
+const EMPTY = ".";
+
 class MovableShape {
   shape;
   row;
@@ -18,10 +20,15 @@ export class Board {
   #width;
   #height;
   #falling = null;
+  #immobile;
 
   constructor(width, height) {
     this.#width = width;
     this.#height = height;
+    this.#immobile = new Array(height);
+    for (let row = 0; row < height; row++) {
+      this.#immobile[row] = new Array(width).fill(EMPTY);
+    }
   }
 
   drop(piece) {
@@ -35,6 +42,7 @@ export class Board {
     const attempt = this.#falling.moveDown();
 
     if (attempt.row >= this.#height) {
+      this.#immobile[this.#falling.row][this.#falling.col] = this.#falling.shape;
       this.#falling = null;
     } else {
       this.#falling = attempt;
@@ -51,6 +59,8 @@ export class Board {
       for (let col = 0; col < this.#width; col++) {
         if (this.#falling && row === this.#falling.row && col === this.#falling.col) {
           s += this.#falling.shape;
+        } else if (this.#immobile[row][col] !== EMPTY) {
+          s += this.#immobile[row][col];
         } else {
           s += ".";
         }
