@@ -53,17 +53,20 @@ export class Board {
     return this.#falling !== null;
   }
 
+  blockAt(row, col) {
+    if (this.#falling && row === this.#falling.row && col === this.#falling.col) {
+      return this.#falling.shape;
+    } else if (this.#immobile[row][col] !== EMPTY) {
+      return this.#immobile[row][col];
+    } else {
+      return EMPTY;
+    }
+  }
   toString() {
     let s = "";
     for (let row = 0; row < this.#height; row++) {
       for (let col = 0; col < this.#width; col++) {
-        if (this.#falling && row === this.#falling.row && col === this.#falling.col) {
-          s += this.#falling.shape;
-        } else if (this.#immobile[row][col] !== EMPTY) {
-          s += this.#immobile[row][col];
-        } else {
-          s += ".";
-        }
+        s += this.blockAt(row, col);
       }
       s += "\n";
     }
