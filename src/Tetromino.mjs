@@ -5,7 +5,7 @@ export class Tetromino {
   #orientations;
 
   constructor(currentOrientation, orientations) {
-    this.#currentOrientation = currentOrientation;
+    this.#currentOrientation = (currentOrientation + orientations.length) % orientations.length;
     this.#orientations = orientations;
   }
 
@@ -33,7 +33,7 @@ export class Tetromino {
   }
 
   rotateLeft() {
-    return new Tetromino(this.#orientations[3], this.#orientations);
+    return new Tetromino(this.#currentOrientation - 1, this.#orientations);
   }
 
   #shape() {
