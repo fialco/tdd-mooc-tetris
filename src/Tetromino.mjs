@@ -19,7 +19,7 @@ export class Tetromino {
 
   static I_SHAPE = Tetromino.fromString(
     0,
-    4,
+    2,
     `.....
        .....
        IIII.
@@ -34,7 +34,7 @@ export class Tetromino {
       shape.rotateRight(),
       shape.rotateRight().rotateRight(),
       shape.rotateRight().rotateRight().rotateRight(),
-    ];
+    ].slice(0, orientationCount);
     return new Tetromino(currentOrientation, orientations);
   }
 
