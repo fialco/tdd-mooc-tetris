@@ -9,11 +9,15 @@ export class Tetromino {
     this.#orientations = orientations;
   }
 
-  static T_SHAPE = Tetromino.fromString(`.T.
+  static T_SHAPE = Tetromino.fromString(
+    0,
+    4,
+    `.T.
        TTT
-       ...`);
+       ...`
+  );
 
-  static fromString(initialShape) {
+  static fromString(currentOrientation, orientationCount, initialShape) {
     const shape = RotatingShape.fromString(initialShape);
     const orientations = [
       shape,
@@ -21,7 +25,7 @@ export class Tetromino {
       shape.rotateRight().rotateRight(),
       shape.rotateRight().rotateRight().rotateRight(),
     ];
-    return new Tetromino(shape, orientations);
+    return new Tetromino(currentOrientation, orientations);
   }
 
   rotateRight() {
@@ -33,7 +37,7 @@ export class Tetromino {
   }
 
   #shape() {
-    return this.#currentOrientation;
+    return this.#orientations[this.#currentOrientation];
   }
   toString() {
     return this.#shape().toString();
