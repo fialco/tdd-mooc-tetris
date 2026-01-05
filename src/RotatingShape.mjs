@@ -42,6 +42,10 @@ export class RotatingShape {
     return new RotatingShape(rotated);
   }
 
+  rotateLeft() {
+    return this.rotateRight().rotateRight().rotateRight();
+  }
+
   toString() {
     return shapeToString(this);
   }
