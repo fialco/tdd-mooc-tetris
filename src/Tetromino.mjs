@@ -24,6 +24,10 @@ export class Tetromino {
     return new Tetromino(shape, orientations);
   }
 
+  rotateRight() {
+    return new Tetromino(this.#orientations[1], this.#orientations);
+  }
+
   #shape() {
     return this.#currentOrientation;
   }
