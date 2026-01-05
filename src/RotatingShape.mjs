@@ -1,5 +1,9 @@
 import { shapeToString } from "./shapes.mjs";
 
+function newSquareArray(size) {
+  return size;
+}
+
 export class RotatingShape {
   #shape;
 
@@ -21,6 +25,11 @@ export class RotatingShape {
 
   blockAt(row, col) {
     return this.#shape[row][col];
+  }
+
+  rotateRight() {
+    const size = this.#shape.length;
+    return newSquareArray(size);
   }
 
   toString() {
