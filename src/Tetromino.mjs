@@ -1,3 +1,5 @@
+import { RotatingShape } from "./RotatingShape.mjs";
+
 export class Tetromino {
   #shape;
 
@@ -9,11 +11,12 @@ export class Tetromino {
        TTT
        ...`);
 
-  static fromString(shape) {
-    return new Tetromino(shape.replaceAll(" ", "").split("\n"));
+  static fromString(initialShape) {
+    const shape = RotatingShape.fromString(initialShape);
+    return new Tetromino(shape);
   }
 
   toString() {
-    return this.#shape.toString().replaceAll(",", "\n") + "\n";
+    return this.#shape.toString();
   }
 }
