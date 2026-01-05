@@ -29,7 +29,7 @@ export class Tetromino {
   }
 
   rotateRight() {
-    return new Tetromino(this.#orientations[1], this.#orientations);
+    return new Tetromino(this.#currentOrientation + 1, this.#orientations);
   }
 
   rotateLeft() {
