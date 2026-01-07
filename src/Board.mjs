@@ -67,11 +67,8 @@ export class Board {
   blockAt(row, col) {
     if (this.#falling && row === this.#falling.row && col === this.#falling.col) {
       return this.#falling.shape;
-    } else if (this.#immobile[row][col] !== EMPTY) {
-      return this.#immobile[row][col];
-    } else {
-      return EMPTY;
     }
+    return this.#immobile[row][col];
   }
 
   toString() {
