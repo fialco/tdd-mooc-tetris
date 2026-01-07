@@ -19,8 +19,13 @@ class MovableShape {
   }
 
   blockAt(row, col) {
-    if (row === this.row && col === this.col) {
-      return this.shape.blockAt(row, col);
+    if (
+      row >= this.row &&
+      row < this.row + this.shape.height() &&
+      col >= this.col &&
+      col < this.col + this.shape.width()
+    ) {
+      return this.shape.blockAt(row - this.row, col - this.col);
     } else {
       return EMPTY;
     }
@@ -49,7 +54,7 @@ export class Board {
     if (typeof piece === "string") {
       piece = new Block(piece);
     }
-    this.#falling = new MovableShape(piece, 0, 1);
+    this.#falling = new MovableShape(piece, 0, Math.floor((this.#width - piece.width()) / 2));
   }
 
   tick() {
