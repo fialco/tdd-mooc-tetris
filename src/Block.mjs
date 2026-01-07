@@ -15,6 +15,10 @@ export class Block {
     return 1;
   }
 
+  blockAt(row, col) {
+    return this.#color;
+  }
+
   toString() {
     return shapeToString(this);
   }

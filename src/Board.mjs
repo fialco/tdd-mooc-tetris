@@ -20,7 +20,7 @@ class MovableShape {
 
   blockAt(row, col) {
     if (row === this.row && col === this.col) {
-      return this.shape;
+      return this.shape.blockAt(row, col);
     } else {
       return EMPTY;
     }
@@ -46,6 +46,9 @@ export class Board {
     if (this.#falling) {
       throw new Error("already falling");
     }
+    if (typeof piece === "string") {
+      piece = new Block(piece);
+    }
     this.#falling = new MovableShape(piece, 0, 1);
   }
 
@@ -53,7 +56,7 @@ export class Board {
     const attempt = this.#falling.moveDown();
 
     if (attempt.row >= this.#height || this.#immobile[attempt.row][attempt.col] !== EMPTY) {
-      this.#immobile[this.#falling.row][this.#falling.col] = this.#falling.shape;
+      this.#immobile[this.#falling.row][this.#falling.col] = attempt.blockAt(attempt.row, attempt.col);
       this.#falling = null;
     } else {
       this.#falling = attempt;
