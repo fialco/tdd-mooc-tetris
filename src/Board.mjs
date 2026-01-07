@@ -1,4 +1,5 @@
 import { shapeToString } from "./shapes.mjs";
+import { Block } from "./Block.mjs";
 
 const EMPTY = ".";
 
