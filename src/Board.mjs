@@ -58,6 +58,9 @@ export class Board {
   }
 
   tick() {
+    if (!this.hasFalling()) {
+      return;
+    }
     const attempt = this.#falling.moveDown();
 
     if (attempt.row >= this.#height || this.#immobile[attempt.row][attempt.col] !== EMPTY) {
