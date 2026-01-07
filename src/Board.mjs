@@ -17,6 +17,14 @@ class MovableShape {
   moveDown() {
     return new MovableShape(this.shape, this.row + 1, this.col);
   }
+
+  blockAt(row, col) {
+    if (row === this.row && col === this.col) {
+      return this.shape;
+    } else {
+      return EMPTY;
+    }
+  }
 }
 
 export class Board {
