@@ -73,8 +73,11 @@ export class Board {
   }
 
   blockAt(row, col) {
-    if (this.#falling && row === this.#falling.row && col === this.#falling.col) {
-      return this.#falling.shape;
+    if (this.#falling) {
+      const block = this.#falling.blockAt(row, col);
+      if (block !== EMPTY) {
+        return block;
+      }
     }
     return this.#immobile[row][col];
   }
