@@ -64,9 +64,7 @@ export class Board {
     const attempt = this.#falling.moveDown();
 
     if (this.#hitsFloor(attempt) || this.#hitsImmobile(attempt)) {
-      //tää toimimaan isompien palojen kanssa kun osuu pohjalle
-      this.#immobile[this.#falling.row][this.#falling.col] = attempt.blockAt(attempt.row, attempt.col);
-      this.#falling = null;
+      this.#stopFalling();
     } else {
       this.#falling = attempt;
     }
@@ -84,6 +82,15 @@ export class Board {
       return true;
     }
     return false;
+  }
+
+  #stopFalling() {
+    for (let row = 0; row < this.height(); row++) {
+      for (let col = 0; col < this.width(); col++) {
+        this.#immobile[row][col] = this.blockAt(row, col);
+      }
+    }
+    this.#falling = null;
   }
 
   hasFalling() {
