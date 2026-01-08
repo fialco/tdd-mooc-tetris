@@ -3,6 +3,16 @@ import { Block } from "./Block.mjs";
 
 const EMPTY = ".";
 
+class Point {
+  row;
+  col;
+
+  constructor(row, col) {
+    this.row = row;
+    this.col = col;
+  }
+}
+
 class MovableShape {
   shape;
   row;
