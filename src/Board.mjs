@@ -31,7 +31,12 @@ class MovableShape {
   nonEmptyBlocks() {
     const points = [];
     for (let row = this.row; row < this.row + this.shape.height(); row++) {
-      for (let col = this.col; col < this.col + this.shape.width(); col++) {}
+      for (let col = this.col; col < this.col + this.shape.width(); col++) {
+        const block = this.blockAt(row, col);
+        if (block !== EMPTY) {
+          points.push(new Point(row, col));
+        }
+      }
     }
     return points;
   }
