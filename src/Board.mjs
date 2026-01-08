@@ -94,8 +94,10 @@ export class Board {
   }
 
   #hitsFloor(falling) {
-    if (falling.row >= this.#height) {
-      return true;
+    for (const block of falling.nonEmptyBlocks()) {
+      if (block.row >= this.#height) {
+        return true;
+      }
     }
     return false;
   }
