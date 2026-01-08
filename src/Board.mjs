@@ -28,6 +28,14 @@ class MovableShape {
     return new MovableShape(this.shape, this.row + 1, this.col);
   }
 
+  nonEmptyBlocks() {
+    const points = [];
+    for (let row = this.row; row < this.row + this.shape.height(); row++) {
+      for (let col = this.col; col < this.col + this.shape.width(); col++) {}
+    }
+    return points;
+  }
+
   blockAt(row, col) {
     if (
       row >= this.row &&
