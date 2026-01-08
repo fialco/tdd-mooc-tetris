@@ -103,8 +103,10 @@ export class Board {
   }
 
   #hitsImmobile(falling) {
-    if (this.#immobile[falling.row][falling.col] !== EMPTY) {
-      return true;
+    for (const block of falling.nonEmptyBlocks()) {
+      if (this.#immobile[block.row][block.col] !== EMPTY) {
+        return true;
+      }
     }
     return false;
   }
