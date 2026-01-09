@@ -14,24 +14,24 @@ class Point {
 }
 
 class MovableShape {
-  shape;
-  row;
+  #shape;
+  #row;
   col;
 
   constructor(shape, row, col) {
-    this.shape = shape;
-    this.row = row;
+    this.#shape = shape;
+    this.#row = row;
     this.col = col;
   }
 
   moveDown() {
-    return new MovableShape(this.shape, this.row + 1, this.col);
+    return new MovableShape(this.#shape, this.#row + 1, this.col);
   }
 
   nonEmptyBlocks() {
     const points = [];
-    for (let row = this.row; row < this.row + this.shape.height(); row++) {
-      for (let col = this.col; col < this.col + this.shape.width(); col++) {
+    for (let row = this.#row; row < this.#row + this.#shape.height(); row++) {
+      for (let col = this.col; col < this.col + this.#shape.width(); col++) {
         const block = this.blockAt(row, col);
         if (block !== EMPTY) {
           points.push(new Point(row, col));
@@ -43,12 +43,12 @@ class MovableShape {
 
   blockAt(row, col) {
     if (
-      row >= this.row &&
-      row < this.row + this.shape.height() &&
+      row >= this.#row &&
+      row < this.#row + this.#shape.height() &&
       col >= this.col &&
-      col < this.col + this.shape.width()
+      col < this.col + this.#shape.width()
     ) {
-      return this.shape.blockAt(row - this.row, col - this.col);
+      return this.#shape.blockAt(row - this.#row, col - this.col);
     } else {
       return EMPTY;
     }
