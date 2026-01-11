@@ -105,7 +105,14 @@ export class Board {
     if (!this.hasFalling()) {
       return;
     }
-    this.#falling = this.#falling.moveDown();
+
+    const attempt = this.#falling.moveDown();
+
+    if (this.#hitsFloor(attempt) || this.#hitsImmobile(attempt)) {
+      this.#stopFalling();
+    } else {
+      this.#falling = attempt;
+    }
   }
 
   moveLeft() {
