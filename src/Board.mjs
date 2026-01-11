@@ -101,6 +101,13 @@ export class Board {
     }
   }
 
+  moveDown() {
+    if (!this.hasFalling()) {
+      return;
+    }
+    this.#falling = this.#falling.moveDown();
+  }
+
   moveLeft() {
     if (!this.hasFalling()) {
       return;
