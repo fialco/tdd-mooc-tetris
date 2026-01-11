@@ -113,6 +113,7 @@ export class Board {
       return;
     }
     const attempt = this.#falling.moveLeft();
+
     if (this.#hitsWall(attempt)) {
       return;
     } else {
@@ -137,6 +138,11 @@ export class Board {
   }
 
   #hitsWall(falling) {
+    for (const block of falling.nonEmptyBlocks()) {
+      if (block.col < 0) {
+        return true;
+      }
+    }
     return false;
   }
 
