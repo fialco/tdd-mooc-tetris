@@ -168,7 +168,6 @@ describe("Falling tetrominoes", () => {
     for (let i = 0; i < 3; i++) {
       board.moveLeft();
     }
-    console.log(board.toString());
 
     expect(board.toString()).to.equalShape(
       `..........
@@ -177,6 +176,33 @@ describe("Falling tetrominoes", () => {
        ...T......
        OOTTT.....
        OO........`
+    );
+  });
+
+  test("can not move right through other blocks", () => {
+    board.drop(Tetromino.O_SHAPE);
+
+    for (let i = 0; i < 3; i++) {
+      board.moveRight();
+    }
+    fallToBottom(board);
+    board.drop(Tetromino.T_SHAPE);
+
+    for (let i = 0; i < 3; i++) {
+      board.moveDown();
+    }
+
+    for (let i = 0; i < 3; i++) {
+      board.moveRight();
+    }
+
+    expect(board.toString()).to.equalShape(
+      `..........
+       ..........
+       ..........
+       .....T....
+       ....TTTOO.
+       .......OO.`
     );
   });
 });

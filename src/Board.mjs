@@ -134,7 +134,7 @@ export class Board {
     }
     const attempt = this.#falling.moveRight();
 
-    if (this.#hitsWall(attempt)) {
+    if (this.#hitsWall(attempt) || this.#hitsImmobile(attempt)) {
       return;
     } else {
       this.#falling = attempt;
