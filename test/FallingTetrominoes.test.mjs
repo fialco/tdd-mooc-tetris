@@ -226,4 +226,18 @@ describe("Falling tetrominoes", () => {
        ....OO....`
     );
   });
+
+  test("can be rotated left if space", () => {
+    board.drop(Tetromino.T_SHAPE);
+    board.rotateLeft();
+
+    expect(board.toString()).to.equalShape(
+      `....T.....
+       ...TT.....
+       ....T.....
+       ..........
+       ..........
+       ..........`
+    );
+  });
 });
