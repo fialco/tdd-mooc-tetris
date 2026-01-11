@@ -125,7 +125,13 @@ export class Board {
     if (!this.hasFalling()) {
       return;
     }
-    this.#falling = this.#falling.moveRight();
+    const attempt = this.#falling.moveRight();
+
+    if (this.#hitsWall(attempt)) {
+      return;
+    } else {
+      this.#falling = attempt;
+    }
   }
 
   #hitsFloor(falling) {
@@ -139,7 +145,7 @@ export class Board {
 
   #hitsWall(falling) {
     for (const block of falling.nonEmptyBlocks()) {
-      if (block.col < 0) {
+      if (block.col < 0 || block.col >= this.#width) {
         return true;
       }
     }
