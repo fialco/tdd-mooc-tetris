@@ -102,10 +102,10 @@ describe("Falling tetrominoes", () => {
 
   test("can not move left beyond the board ", () => {
     board.drop(Tetromino.T_SHAPE);
-    board.moveLeft();
-    board.moveLeft();
-    board.moveLeft();
-    board.moveLeft();
+
+    for (let i = 0; i < 5; i++) {
+      board.moveLeft();
+    }
 
     expect(board.toString()).to.equalShape(
       `.T........
