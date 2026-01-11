@@ -32,6 +32,10 @@ class MovableShape {
     return new MovableShape(this.#shape, this.#row, this.#col - 1);
   }
 
+  moveRight() {
+    return new MovableShape(this.#shape, this.#row, this.#col + 1);
+  }
+
   nonEmptyBlocks() {
     const points = [];
     for (let row = this.#row; row < this.#row + this.#shape.height(); row++) {
@@ -102,6 +106,13 @@ export class Board {
       return;
     }
     this.#falling = this.#falling.moveLeft();
+  }
+
+  moveRight() {
+    if (!this.hasFalling()) {
+      return;
+    }
+    this.#falling = this.#falling.moveRight();
   }
 
   #hitsFloor(falling) {
