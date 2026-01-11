@@ -205,4 +205,25 @@ describe("Falling tetrominoes", () => {
        .......OO.`
     );
   });
+
+  test("can not move down through other blocks", () => {
+    board.drop(Tetromino.O_SHAPE);
+
+    fallToBottom(board);
+    board.drop(Tetromino.T_SHAPE);
+
+    for (let i = 0; i < 4; i++) {
+      board.moveDown();
+    }
+
+    expect(board.hasFalling()).to.be.false;
+    expect(board.toString()).to.equalShape(
+      `..........
+       ..........
+       ....T.....
+       ...TTT....
+       ....OO....
+       ....OO....`
+    );
+  });
 });
