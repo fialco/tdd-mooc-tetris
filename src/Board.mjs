@@ -112,7 +112,12 @@ export class Board {
     if (!this.hasFalling()) {
       return;
     }
-    this.#falling = this.#falling.moveLeft();
+    const attempt = this.#falling.moveLeft();
+    if (this.#hitsWall(attempt)) {
+      return;
+    } else {
+      this.#falling = attempt;
+    }
   }
 
   moveRight() {
@@ -128,6 +133,10 @@ export class Board {
         return true;
       }
     }
+    return false;
+  }
+
+  #hitsWall(falling) {
     return false;
   }
 
