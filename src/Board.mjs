@@ -36,6 +36,10 @@ class MovableShape {
     return new MovableShape(this.#shape, this.#row, this.#col + 1);
   }
 
+  rotateLeft() {
+    return new MovableShape(this.#shape.rotateLeft(), this.#row, this.#col);
+  }
+
   nonEmptyBlocks() {
     const points = [];
     for (let row = this.#row; row < this.#row + this.#shape.height(); row++) {
@@ -139,6 +143,13 @@ export class Board {
     } else {
       this.#falling = attempt;
     }
+  }
+
+  rotateLeft() {
+    if (!this.hasFalling()) {
+      return;
+    }
+    this.#falling = this.#falling.rotateLeft();
   }
 
   #hitsFloor(falling) {
