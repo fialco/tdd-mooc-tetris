@@ -254,4 +254,51 @@ describe("Falling tetrominoes", () => {
        ..........`
     );
   });
+
+  test("can not be rotated right if no space", () => {
+    board.setState([
+      [".", ".", ".", ".", ".", ".", ".", ".", ".", "."],
+      [".", ".", ".", ".", ".", ".", ".", ".", ".", "."],
+      [".", ".", ".", "#", ".", ".", "#", ".", ".", "."],
+      [".", ".", ".", "#", ".", ".", "#", ".", ".", "."],
+      [".", ".", ".", "#", ".", ".", "#", ".", ".", "."],
+      [".", ".", ".", "#", ".", ".", "#", ".", ".", "."],
+    ]);
+
+    board.drop(Tetromino.T_SHAPE);
+    board.rotateRight();
+
+    expect(board.toString()).to.equalShape(
+      `....T.....
+       ....TT....
+       ...#T.#...
+       ...#..#...
+       ...#..#...
+       ...#..#...`
+    );
+
+    board.tick();
+    board.tick();
+    board.tick();
+
+    expect(board.toString()).to.equalShape(
+      `..........
+       ..........
+       ...#..#...
+       ...#T.#...
+       ...#TT#...
+       ...#T.#...`
+    );
+
+    board.rotateRight();
+
+    expect(board.toString()).to.equalShape(
+      `..........
+       ..........
+       ...#..#...
+       ...#T.#...
+       ...#TT#...
+       ...#T.#...`
+    );
+  });
 });
