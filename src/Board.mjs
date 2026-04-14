@@ -86,6 +86,13 @@ export class Board {
     }
   }
 
+  setState(array) {
+    if (array.length != this.#height || array[0].length != this.#width) {
+      throw new Error("Board state dimensions not same as board");
+    }
+    this.#immobile = array;
+  }
+
   drop(piece) {
     if (this.#falling) {
       throw new Error("already falling");
