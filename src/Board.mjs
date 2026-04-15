@@ -121,10 +121,10 @@ export class Board {
     }
     const attempt = this.#falling.moveDown();
 
-    if (this.#hitsFloor(attempt) || this.#hitsImmobile(attempt)) {
-      this.#stopFalling();
-    } else {
+    if (this.#isAllowedMove(attempt)) {
       this.#falling = attempt;
+    } else {
+      this.#stopFalling();
     }
   }
 
