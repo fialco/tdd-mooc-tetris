@@ -200,24 +200,6 @@ export class Board {
     return false;
   }
 
-  #hitsFloor(falling) {
-    for (const block of falling.nonEmptyBlocks()) {
-      if (block.row >= this.#height) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  #hitsWall(falling) {
-    for (const block of falling.nonEmptyBlocks()) {
-      if (block.col < 0 || block.col >= this.#width) {
-        return true;
-      }
-    }
-    return false;
-  }
-
   #hitsImmobile(falling) {
     for (const block of falling.nonEmptyBlocks()) {
       if (this.#immobile[block.row][block.col] !== EMPTY) {
