@@ -187,6 +187,16 @@ export class Board {
     }
   }
 
+  #tryRotate(attempt) {
+    const moves = [attempt, attempt.moveLeft(), attempt.moveRight(), attempt.moveRight().moveRight()];
+    for (let move of moves) {
+      if (this.#isAllowedMove(move)) {
+        this.#falling = move;
+        return;
+      }
+    }
+  }
+
   #isAllowedMove(falling) {
     return !this.#isOutside(falling) && !this.#hitsImmobile(falling);
   }
