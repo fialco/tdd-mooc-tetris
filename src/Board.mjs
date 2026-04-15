@@ -169,22 +169,15 @@ export class Board {
       return;
     }
     const attempt = this.#falling.rotateLeft();
-
-    if (this.#isAllowedMove(attempt)) {
-      this.#falling = attempt;
-    }
+    this.#tryRotate(attempt);
   }
 
   rotateRight() {
     if (!this.hasFalling()) {
       return;
     }
-
     const attempt = this.#falling.rotateRight();
-
-    if (this.#isAllowedMove(attempt)) {
-      this.#falling = attempt;
-    }
+    this.#tryRotate(attempt);
   }
 
   #tryRotate(attempt) {
