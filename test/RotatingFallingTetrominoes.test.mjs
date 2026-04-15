@@ -1,0 +1,133 @@
+import { beforeEach, describe, test } from "vitest";
+import { expect } from "chai";
+import { Board } from "../src/Board.mjs";
+import { Tetromino } from "../src/Tetromino.mjs";
+
+describe("Rotating falling tetrominoes", () => {
+  let board;
+  beforeEach(() => {
+    board = new Board(10, 6);
+  });
+
+  test("can be rotated left if space", () => {
+    board.drop(Tetromino.T_SHAPE);
+    board.rotateLeft();
+
+    expect(board.toString()).to.equalShape(
+      `....T.....
+       ...TT.....
+       ....T.....
+       ..........
+       ..........
+       ..........`
+    );
+  });
+
+  test("can be rotated right if space", () => {
+    board.drop(Tetromino.T_SHAPE);
+    board.rotateRight();
+
+    expect(board.toString()).to.equalShape(
+      `....T.....
+       ....TT....
+       ....T.....
+       ..........
+       ..........
+       ..........`
+    );
+  });
+
+  test("can not be rotated left if no space", () => {
+    board.setState([
+      [".", ".", ".", ".", ".", ".", ".", ".", ".", "."],
+      [".", ".", ".", ".", ".", ".", ".", ".", ".", "."],
+      [".", ".", "#", ".", ".", "#", ".", ".", ".", "."],
+      [".", ".", "#", ".", ".", "#", ".", ".", ".", "."],
+      [".", ".", "#", ".", ".", "#", ".", ".", ".", "."],
+      [".", ".", "#", ".", ".", "#", ".", ".", ".", "."],
+    ]);
+
+    board.drop(Tetromino.T_SHAPE);
+    board.rotateLeft();
+
+    expect(board.toString()).to.equalShape(
+      `....T.....
+       ...TT.....
+       ..#.T#....
+       ..#..#....
+       ..#..#....
+       ..#..#....`
+    );
+
+    board.tick();
+    board.tick();
+    board.tick();
+
+    expect(board.toString()).to.equalShape(
+      `..........
+       ..........
+       ..#..#....
+       ..#.T#....
+       ..#TT#....
+       ..#.T#....`
+    );
+
+    board.rotateLeft();
+
+    expect(board.toString()).to.equalShape(
+      `..........
+       ..........
+       ..#..#....
+       ..#.T#....
+       ..#TT#....
+       ..#.T#....`
+    );
+  });
+
+  test("can not be rotated right if no space", () => {
+    board.setState([
+      [".", ".", ".", ".", ".", ".", ".", ".", ".", "."],
+      [".", ".", ".", ".", ".", ".", ".", ".", ".", "."],
+      [".", ".", ".", "#", ".", ".", "#", ".", ".", "."],
+      [".", ".", ".", "#", ".", ".", "#", ".", ".", "."],
+      [".", ".", ".", "#", ".", ".", "#", ".", ".", "."],
+      [".", ".", ".", "#", ".", ".", "#", ".", ".", "."],
+    ]);
+
+    board.drop(Tetromino.T_SHAPE);
+    board.rotateRight();
+
+    expect(board.toString()).to.equalShape(
+      `....T.....
+       ....TT....
+       ...#T.#...
+       ...#..#...
+       ...#..#...
+       ...#..#...`
+    );
+
+    board.tick();
+    board.tick();
+    board.tick();
+
+    expect(board.toString()).to.equalShape(
+      `..........
+       ..........
+       ...#..#...
+       ...#T.#...
+       ...#TT#...
+       ...#T.#...`
+    );
+
+    board.rotateRight();
+
+    expect(board.toString()).to.equalShape(
+      `..........
+       ..........
+       ...#..#...
+       ...#T.#...
+       ...#TT#...
+       ...#T.#...`
+    );
+  });
+});
