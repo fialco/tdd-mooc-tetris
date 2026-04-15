@@ -130,4 +130,47 @@ describe("Rotating falling tetrominoes", () => {
        ...#T.#...`
     );
   });
+
+  test("can wall kick when wall on left", () => {
+    board.setState([
+      ["#", "#", ".", ".", ".", ".", ".", ".", ".", "."],
+      ["#", "#", ".", ".", ".", ".", ".", ".", ".", "."],
+      ["#", "#", ".", ".", ".", ".", ".", ".", ".", "."],
+      ["#", "#", ".", ".", ".", ".", ".", ".", ".", "."],
+      ["#", "#", ".", ".", ".", ".", ".", ".", ".", "."],
+      ["#", "#", ".", ".", ".", ".", ".", ".", ".", "."],
+    ]);
+
+    board.drop(Tetromino.I_SHAPE);
+
+    board.tick();
+    board.tick();
+    board.tick();
+    board.rotateRight();
+
+    board.moveLeft();
+    board.moveLeft();
+
+    console.log(board.toString());
+
+    expect(board.toString()).to.equalShape(
+      `##........
+       ##I.......
+       ##I.......
+       ##I.......
+       ##I.......
+       ##........`
+    );
+
+    board.rotateRight();
+
+    expect(board.toString()).to.equalShape(
+      `##........
+       ##........
+       ##IIII....
+       ##........
+       ##........
+       ##........`
+    );
+  });
 });
