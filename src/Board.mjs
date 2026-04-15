@@ -167,7 +167,14 @@ export class Board {
     if (!this.hasFalling()) {
       return;
     }
-    this.#falling = this.#falling.rotateRight();
+
+    const attempt = this.#falling.rotateRight();
+
+    if (this.#hitsWall(attempt) || this.#hitsImmobile(attempt)) {
+      return;
+    } else {
+      this.#falling = attempt;
+    }
   }
 
   #hitsFloor(falling) {
