@@ -174,9 +174,7 @@ export class Board {
     }
     const attempt = this.#falling.rotateLeft();
 
-    if (this.#hitsWall(attempt) || this.#hitsImmobile(attempt)) {
-      return;
-    } else {
+    if (this.#isAllowedMove(attempt)) {
       this.#falling = attempt;
     }
   }
@@ -188,9 +186,7 @@ export class Board {
 
     const attempt = this.#falling.rotateRight();
 
-    if (this.#hitsWall(attempt) || this.#hitsImmobile(attempt)) {
-      return;
-    } else {
+    if (this.#isAllowedMove(attempt)) {
       this.#falling = attempt;
     }
   }
