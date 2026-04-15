@@ -195,6 +195,19 @@ export class Board {
     }
   }
 
+  #isAllowedMove(falling) {
+    return !this.#isOutside(falling) && !this.#hitsImmobile(falling);
+  }
+
+  #isOutside(falling) {
+    for (const block of falling.nonEmptyBlocks()) {
+      if (block.row < 0 || block.row >= this.height() || block.col < 0 || block.col >= this.width()) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   #hitsFloor(falling) {
     for (const block of falling.nonEmptyBlocks()) {
       if (block.row >= this.#height) {
