@@ -148,9 +148,7 @@ export class Board {
     }
     const attempt = this.#falling.moveLeft();
 
-    if (this.#hitsWall(attempt) || this.#hitsImmobile(attempt)) {
-      return;
-    } else {
+    if (this.#isAllowedMove(attempt)) {
       this.#falling = attempt;
     }
   }
@@ -161,9 +159,7 @@ export class Board {
     }
     const attempt = this.#falling.moveRight();
 
-    if (this.#hitsWall(attempt) || this.#hitsImmobile(attempt)) {
-      return;
-    } else {
+    if (this.#isAllowedMove(attempt)) {
       this.#falling = attempt;
     }
   }
