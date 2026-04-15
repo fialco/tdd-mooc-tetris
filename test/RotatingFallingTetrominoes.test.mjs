@@ -171,4 +171,44 @@ describe("Rotating falling tetrominoes", () => {
        ##........`
     );
   });
+
+  test("can wall kick when wall on right", () => {
+    board.setState([
+      [".", ".", ".", ".", ".", ".", "#", ".", ".", "."],
+      [".", ".", ".", ".", ".", ".", "#", ".", ".", "."],
+      [".", ".", ".", ".", ".", ".", "#", ".", ".", "."],
+      [".", ".", ".", ".", ".", ".", "#", ".", ".", "."],
+      [".", ".", ".", ".", ".", ".", "#", ".", ".", "."],
+      [".", ".", ".", ".", ".", ".", "#", ".", ".", "."],
+    ]);
+
+    board.drop(Tetromino.I_SHAPE);
+
+    board.tick();
+    board.tick();
+    board.tick();
+
+    board.rotateRight();
+    board.moveRight();
+
+    expect(board.toString()).to.equalShape(
+      `......#...
+       .....I#...
+       .....I#...
+       .....I#...
+       .....I#...
+       ......#...`
+    );
+
+    board.rotateRight();
+
+    expect(board.toString()).to.equalShape(
+      `......#...
+       ......#...
+       ......#...
+       ..IIII#...
+       ......#...
+       ......#...`
+    );
+  });
 });
