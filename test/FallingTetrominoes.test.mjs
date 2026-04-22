@@ -30,10 +30,10 @@ describe("Falling tetrominoes", () => {
   });
 
   test("start from the top middle, I shape", () => {
-    board.drop(Tetromino.I_SHAPE);
+    board.drop(ArikaTetromino.I_SHAPE);
 
     expect(board.toString()).to.equalShape(
-      `..IIII....
+      `...IIII...
        ..........
        ..........
        ..........
@@ -43,7 +43,7 @@ describe("Falling tetrominoes", () => {
   });
 
   test("start from the top middle, O shape", () => {
-    board.drop(Tetromino.O_SHAPE);
+    board.drop(ArikaTetromino.O_SHAPE);
 
     expect(board.toString()).to.equalShape(
       `....OO....
