@@ -36,15 +36,20 @@ export class ArikaTetromino {
     ),
   ]);
 
-  static I_SHAPE = ArikaTetromino.fromString(
-    0,
-    2,
-    `.....
-       .....
-       IIII.
-       .....
-       .....`
-  );
+  static I_SHAPE = new ArikaTetromino(0, [
+    ArikaRotatingShape.fromString(
+      `....
+       IIII
+       ....
+       ....`
+    ),
+    ArikaRotatingShape.fromString(
+      `..I.
+       ..I.
+       ..I.
+       ..I.`
+    ),
+  ]);
 
   static O_SHAPE = ArikaTetromino.fromString(
     0,
