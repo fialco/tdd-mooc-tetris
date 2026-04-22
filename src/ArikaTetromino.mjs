@@ -9,13 +9,32 @@ export class ArikaTetromino {
     this.#orientations = orientations;
   }
 
-  static T_SHAPE = ArikaTetromino.fromString(
-    0,
-    4,
-    `.T.
-       TTT
-       ...`
-  );
+  static T_SHAPE = new ArikaTetromino(0, [
+    ArikaRotatingShape.fromString(
+      `....
+       TTT.
+       .T..
+       ....`
+    ),
+    ArikaRotatingShape.fromString(
+      `.T..
+       TT..
+       .T..
+       ....`
+    ),
+    ArikaRotatingShape.fromString(
+      `....
+       .T..
+       TTT.
+       ....`
+    ),
+    ArikaRotatingShape.fromString(
+      `.T..
+       .TT.
+       .T..
+       ....`
+    ),
+  ]);
 
   static I_SHAPE = ArikaTetromino.fromString(
     0,
