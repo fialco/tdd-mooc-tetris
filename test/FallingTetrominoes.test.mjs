@@ -234,10 +234,10 @@ describe("Falling tetrominoes", () => {
   });
 
   test("can not move down through other blocks", () => {
-    board.drop(Tetromino.O_SHAPE);
+    board.drop(ArikaTetromino.O_SHAPE);
 
     fallToBottom(board);
-    board.drop(Tetromino.T_SHAPE);
+    board.drop(ArikaTetromino.T_SHAPE);
 
     for (let i = 0; i < 4; i++) {
       board.moveDown();
@@ -247,8 +247,8 @@ describe("Falling tetrominoes", () => {
     expect(board.toString()).to.equalShape(
       `..........
        ..........
-       ....T.....
        ...TTT....
+       ....T.....
        ....OO....
        ....OO....`
     );
