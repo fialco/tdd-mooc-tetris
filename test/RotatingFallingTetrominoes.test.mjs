@@ -146,13 +146,13 @@ describe("Rotating falling tetrominoes", () => {
       ["#", "#", ".", ".", ".", ".", ".", ".", ".", "."],
     ]);
 
-    board.drop(Tetromino.I_SHAPE);
+    board.drop(ArikaTetromino.I_SHAPE);
 
-    board.tick();
     board.tick();
     board.tick();
     board.rotateRight();
 
+    board.moveLeft();
     board.moveLeft();
     board.moveLeft();
 
@@ -170,8 +170,8 @@ describe("Rotating falling tetrominoes", () => {
     expect(board.toString()).to.equalShape(
       `##........
        ##........
-       ##........
        ##IIII....
+       ##........
        ##........
        ##........`
     );
