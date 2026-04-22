@@ -51,13 +51,14 @@ export class ArikaTetromino {
     ),
   ]);
 
-  static O_SHAPE = ArikaTetromino.fromString(
-    0,
-    1,
-    `.OO
-       .OO
-       ...`
-  );
+  static O_SHAPE = new ArikaTetromino(0, [
+    ArikaRotatingShape.fromString(
+      `....
+       .OO.
+       .OO.
+       ....`
+    ),
+  ]);
 
   static fromString(currentOrientation, orientationCount, initialShape) {
     const shape = ArikaRotatingShape.fromString(initialShape);
