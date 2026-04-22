@@ -8,7 +8,7 @@ function newSquareArray(size) {
   return array;
 }
 
-export class RotatingShape {
+export class ArikaRotatingShape {
   #shape;
 
   constructor(shape, row, col) {
@@ -16,7 +16,7 @@ export class RotatingShape {
   }
 
   static fromString(shape) {
-    return new RotatingShape(shape.replaceAll(" ", "").split("\n"));
+    return new ArikaRotatingShape(shape.replaceAll(" ", "").split("\n"));
   }
 
   width() {
@@ -39,7 +39,7 @@ export class RotatingShape {
         rotated[row][column] = this.#shape[size - 1 - column][row];
       }
     }
-    return new RotatingShape(rotated);
+    return new ArikaRotatingShape(rotated);
   }
 
   rotateLeft() {
