@@ -11,14 +11,16 @@ describe("Rotating falling tetrominoes", () => {
   });
 
   test("can be rotated left if space", () => {
-    board.drop(Tetromino.T_SHAPE);
+    board.drop(ArikaTetromino.T_SHAPE);
+    board.tick();
+    board.tick();
     board.rotateLeft();
 
     expect(board.toString()).to.equalShape(
-      `....T.....
-       ...TT.....
+      `..........
        ....T.....
-       ..........
+       ....TT....
+       ....T.....
        ..........
        ..........`
     );
@@ -29,8 +31,6 @@ describe("Rotating falling tetrominoes", () => {
     board.tick();
     board.tick();
     board.rotateRight();
-
-    console.log(board.toString());
 
     expect(board.toString()).to.equalShape(
       `..........
