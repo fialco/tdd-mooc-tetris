@@ -162,7 +162,7 @@ describe("Falling tetrominoes", () => {
   });
 
   test("can not move down below the floor", () => {
-    board.drop(Tetromino.T_SHAPE);
+    board.drop(ArikaTetromino.T_SHAPE);
     expect(board.hasFalling()).to.be.true;
 
     for (let i = 0; i < 5; i++) {
@@ -174,21 +174,21 @@ describe("Falling tetrominoes", () => {
        ..........
        ..........
        ..........
-       ....T.....
-       ...TTT....`
+       ...TTT....
+       ....T.....`
     );
   });
 
   test("can not move left through other blocks", () => {
-    board.drop(Tetromino.O_SHAPE);
+    board.drop(ArikaTetromino.O_SHAPE);
 
     for (let i = 0; i < 4; i++) {
       board.moveLeft();
     }
     fallToBottom(board);
-    board.drop(Tetromino.T_SHAPE);
+    board.drop(ArikaTetromino.T_SHAPE);
 
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 4; i++) {
       board.moveDown();
     }
 
@@ -200,22 +200,22 @@ describe("Falling tetrominoes", () => {
       `..........
        ..........
        ..........
-       ...T......
+       ..........
        OOTTT.....
-       OO........`
+       OO.T......`
     );
   });
 
   test("can not move right through other blocks", () => {
-    board.drop(Tetromino.O_SHAPE);
+    board.drop(ArikaTetromino.O_SHAPE);
 
     for (let i = 0; i < 3; i++) {
       board.moveRight();
     }
     fallToBottom(board);
-    board.drop(Tetromino.T_SHAPE);
+    board.drop(ArikaTetromino.T_SHAPE);
 
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 4; i++) {
       board.moveDown();
     }
 
@@ -227,9 +227,9 @@ describe("Falling tetrominoes", () => {
       `..........
        ..........
        ..........
-       .....T....
+       ..........
        ....TTTOO.
-       .......OO.`
+       .....T.OO.`
     );
   });
 
