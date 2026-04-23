@@ -1,7 +1,7 @@
 import { beforeEach, describe, test } from "vitest";
 import { expect } from "chai";
 import { Board } from "../src/Board.mjs";
-import { ArikaTetromino } from "../src/ArikaTetromino.mjs";
+import { Tetromino } from "../src/Tetromino.mjs";
 
 describe("Rotating falling tetrominoes", () => {
   let board;
@@ -10,7 +10,7 @@ describe("Rotating falling tetrominoes", () => {
   });
 
   test("can be rotated left if space", () => {
-    board.drop(ArikaTetromino.T_SHAPE);
+    board.drop(Tetromino.T_SHAPE);
     board.tick();
     board.rotateLeft();
 
@@ -25,7 +25,7 @@ describe("Rotating falling tetrominoes", () => {
   });
 
   test("can be rotated right if space", () => {
-    board.drop(ArikaTetromino.T_SHAPE);
+    board.drop(Tetromino.T_SHAPE);
     board.tick();
     board.rotateRight();
 
@@ -49,7 +49,7 @@ describe("Rotating falling tetrominoes", () => {
       [".", ".", "#", ".", ".", "#", ".", ".", ".", "."],
     ]);
 
-    board.drop(ArikaTetromino.T_SHAPE);
+    board.drop(Tetromino.T_SHAPE);
     board.tick();
     board.rotateRight();
 
@@ -97,7 +97,7 @@ describe("Rotating falling tetrominoes", () => {
       [".", ".", ".", "#", ".", ".", "#", ".", ".", "."],
     ]);
 
-    board.drop(ArikaTetromino.T_SHAPE);
+    board.drop(Tetromino.T_SHAPE);
     board.tick();
     board.rotateLeft();
 
@@ -145,7 +145,7 @@ describe("Rotating falling tetrominoes", () => {
       ["#", "#", ".", ".", ".", ".", ".", ".", ".", "."],
     ]);
 
-    board.drop(ArikaTetromino.I_SHAPE);
+    board.drop(Tetromino.I_SHAPE);
 
     board.tick();
     board.tick();
@@ -186,7 +186,7 @@ describe("Rotating falling tetrominoes", () => {
       [".", ".", ".", ".", ".", ".", ".", "#", ".", "."],
     ]);
 
-    board.drop(ArikaTetromino.I_SHAPE);
+    board.drop(Tetromino.I_SHAPE);
 
     board.tick();
     board.tick();

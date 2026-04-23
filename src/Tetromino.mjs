@@ -1,4 +1,4 @@
-import { RotatingShape } from "./RotatingShape.mjs";
+import { ArikaRotatingShape } from "./ArikaRotatingShape.mjs";
 
 export class Tetromino {
   #currentOrientation;
@@ -9,42 +9,56 @@ export class Tetromino {
     this.#orientations = orientations;
   }
 
-  static T_SHAPE = Tetromino.fromString(
-    0,
-    4,
-    `.T.
-       TTT
-       ...`
-  );
+  static T_SHAPE = new Tetromino(0, [
+    ArikaRotatingShape.fromString(
+      `....
+       TTT.
+       .T..
+       ....`
+    ),
+    ArikaRotatingShape.fromString(
+      `.T..
+       TT..
+       .T..
+       ....`
+    ),
+    ArikaRotatingShape.fromString(
+      `....
+       .T..
+       TTT.
+       ....`
+    ),
+    ArikaRotatingShape.fromString(
+      `.T..
+       .TT.
+       .T..
+       ....`
+    ),
+  ]);
 
-  static I_SHAPE = Tetromino.fromString(
-    0,
-    2,
-    `.....
-       .....
-       IIII.
-       .....
-       .....`
-  );
+  static I_SHAPE = new Tetromino(0, [
+    ArikaRotatingShape.fromString(
+      `....
+       IIII
+       ....
+       ....`
+    ),
+    ArikaRotatingShape.fromString(
+      `..I.
+       ..I.
+       ..I.
+       ..I.`
+    ),
+  ]);
 
-  static O_SHAPE = Tetromino.fromString(
-    0,
-    1,
-    `.OO
-       .OO
-       ...`
-  );
-
-  static fromString(currentOrientation, orientationCount, initialShape) {
-    const shape = RotatingShape.fromString(initialShape);
-    const orientations = [
-      shape,
-      shape.rotateRight(),
-      shape.rotateRight().rotateRight(),
-      shape.rotateRight().rotateRight().rotateRight(),
-    ].slice(0, orientationCount);
-    return new Tetromino(currentOrientation, orientations);
-  }
+  static O_SHAPE = new Tetromino(0, [
+    ArikaRotatingShape.fromString(
+      `....
+       .OO.
+       .OO.
+       ....`
+    ),
+  ]);
 
   rotateRight() {
     return new Tetromino(this.#currentOrientation + 1, this.#orientations);
