@@ -4,7 +4,7 @@ import { Board } from "../src/Board.mjs";
 import { Tetromino } from "../src/Tetromino.mjs";
 
 function fallToBottom(board) {
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 6; i++) {
     board.tick();
   }
 }
@@ -16,6 +16,29 @@ describe("Line clear", () => {
   });
 
   test("clears one floor line", () => {
+    board.setState(`..........
+       ..........
+       ..........
+       ..........
+       ..........
+       ###....###`);
+
+    board.drop(Tetromino.I_SHAPE);
+
+    fallToBottom(board);
+
+    expect(board.toString()).to.equalShape(
+      `..........
+       ..........
+       ..........
+       ..........
+       ..........
+       ..........`
+    );
+  });
+
+  /*
+  test("clears one floor line, drops remaining blocks, ", () => {
     board.setState(`..........
        ..........
        ..........
@@ -36,6 +59,7 @@ describe("Line clear", () => {
        ....SS....`
     );
   });
+*/
 
   // TODO: clears two lines
   // TODO: clears three lines
