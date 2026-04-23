@@ -60,6 +60,33 @@ export class Tetromino {
     ),
   ]);
 
+  static L_SHAPE = new Tetromino(0, [
+    RotatingShape.fromString(
+      `....
+       LLL.
+       L...
+       ....`,
+    ),
+    RotatingShape.fromString(
+      `LL..
+       .L..
+       .L..
+       ....`,
+    ),
+    RotatingShape.fromString(
+      `....
+       ..L.
+       LLL.
+       ....`,
+    ),
+    RotatingShape.fromString(
+      `.L..
+       .L..
+       .LL.
+       ....`,
+    ),
+  ]);
+
   rotateRight() {
     return new Tetromino(this.#currentOrientation + 1, this.#orientations);
   }
