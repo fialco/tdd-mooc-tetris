@@ -87,6 +87,33 @@ export class Tetromino {
     ),
   ]);
 
+  static J_SHAPE = new Tetromino(0, [
+    RotatingShape.fromString(
+      `....
+       JJJ.
+       ..J.
+       ....`,
+    ),
+    RotatingShape.fromString(
+      `.J..
+       .J..
+       JJ..
+       ....`,
+    ),
+    RotatingShape.fromString(
+      `....
+       J...
+       JJJ.
+       ....`,
+    ),
+    RotatingShape.fromString(
+      `.JJ.
+       .J..
+       .J..
+       ....`,
+    ),
+  ]);
+
   rotateRight() {
     return new Tetromino(this.#currentOrientation + 1, this.#orientations);
   }
