@@ -1,10 +1,9 @@
 import { describe, test } from "vitest";
 import { expect } from "chai";
-import { RotatingShape } from "../src/RotatingShape.mjs";
 import { ArikaRotatingShape } from "../src/ArikaRotatingShape.mjs";
 
 describe("Rotating 3x3 shape", () => {
-  const shape = RotatingShape.fromString(
+  const shape = ArikaRotatingShape.fromString(
     `ABC
      DEF
      GHI`
@@ -36,7 +35,7 @@ describe("Rotating 3x3 shape", () => {
 });
 
 describe("Rotating 5x5 shape", () => {
-  const shape = RotatingShape.fromString(
+  const shape = ArikaRotatingShape.fromString(
     `ABCDE
      FGHIJ
      KLMNO
