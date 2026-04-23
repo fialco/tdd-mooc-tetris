@@ -86,14 +86,7 @@ export class Board {
     }
   }
 
-  setState(array) {
-    if (array.length != this.#height || array[0].length != this.#width) {
-      throw new Error("Board state dimensions not same as board");
-    }
-    this.#immobile = array;
-  }
-
-  setStateFromString(setString) {
+  setState(setString) {
     let array = setString
       .trim()
       .split('\n')
