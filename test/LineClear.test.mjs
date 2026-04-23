@@ -109,7 +109,6 @@ describe("Line clear", () => {
     );
   });
 
-  /*
   test("clears one floor line, drops remaining blocks, ", () => {
     board.setState(`..........
        ..........
@@ -131,8 +130,4 @@ describe("Line clear", () => {
        ....SS....`
     );
   });
-*/
-
-  // TODO: clears three lines
-  // TODO: clears four lines
 });
