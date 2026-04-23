@@ -60,17 +60,6 @@ export class ArikaTetromino {
     ),
   ]);
 
-  static fromString(currentOrientation, orientationCount, initialShape) {
-    const shape = ArikaRotatingShape.fromString(initialShape);
-    const orientations = [
-      shape,
-      shape.rotateRight(),
-      shape.rotateRight().rotateRight(),
-      shape.rotateRight().rotateRight().rotateRight(),
-    ].slice(0, orientationCount);
-    return new ArikaTetromino(currentOrientation, orientations);
-  }
-
   rotateRight() {
     return new ArikaTetromino(this.#currentOrientation + 1, this.#orientations);
   }
