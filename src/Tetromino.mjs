@@ -114,6 +114,21 @@ export class Tetromino {
     ),
   ]);
 
+  static S_SHAPE = new Tetromino(0, [
+    RotatingShape.fromString(
+      `....
+       .SS.
+       SS..
+       ....`,
+    ),
+    RotatingShape.fromString(
+      `S...
+       SS..
+       .S..
+       ....`,
+    ),
+  ]);
+
   rotateRight() {
     return new Tetromino(this.#currentOrientation + 1, this.#orientations);
   }
