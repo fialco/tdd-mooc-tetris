@@ -4,5 +4,8 @@ export default {
     setupFiles: ["test/testing.mjs"],
     passWithNoTests: true,
     forceRerunTriggers: ["**"],
+    coverage: {
+      provider: "v8"
+    }
   },
 };
