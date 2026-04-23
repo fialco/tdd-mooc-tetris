@@ -37,6 +37,78 @@ describe("Line clear", () => {
     );
   });
 
+  test("clears two lines", () => {
+    board.setState(`..........
+       ..........
+       ..........
+       ..........
+       ####..####
+       ####..####`);
+
+    board.drop(Tetromino.O_SHAPE);
+
+    fallToBottom(board);
+
+    expect(board.toString()).to.equalShape(
+      `..........
+       ..........
+       ..........
+       ..........
+       ..........
+       ..........`
+    );
+  });
+
+  test("clears three lines", () => {
+    board.setState(`..........
+       ..........
+       ..........
+       ###..#####
+       ####.#####
+       ####.#####`);
+
+    board.drop(Tetromino.L_SHAPE);
+
+    board.tick();
+    board.rotateRight();
+
+    fallToBottom(board);
+
+    expect(board.toString()).to.equalShape(
+      `..........
+       ..........
+       ..........
+       ..........
+       ..........
+       ..........`
+    );
+  });
+
+  test("clears four lines", () => {
+    board.setState(`..........
+       ..........
+       ####.#####
+       ####.#####
+       ####.#####
+       ####.#####`);
+
+    board.drop(Tetromino.I_SHAPE);
+
+    board.tick();
+    board.rotateRight();
+
+    fallToBottom(board);
+
+    expect(board.toString()).to.equalShape(
+      `..........
+       ..........
+       ..........
+       ..........
+       ..........
+       ..........`
+    );
+  });
+
   /*
   test("clears one floor line, drops remaining blocks, ", () => {
     board.setState(`..........
@@ -61,7 +133,6 @@ describe("Line clear", () => {
   });
 */
 
-  // TODO: clears two lines
   // TODO: clears three lines
   // TODO: clears four lines
 });
