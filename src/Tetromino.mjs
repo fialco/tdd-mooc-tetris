@@ -129,6 +129,21 @@ export class Tetromino {
     ),
   ]);
 
+  static Z_SHAPE = new Tetromino(0, [
+    RotatingShape.fromString(
+      `....
+       ZZ..
+       .ZZ.
+       ....`,
+    ),
+    RotatingShape.fromString(
+      `..Z.
+       .ZZ.
+       .Z..
+       ....`,
+    ),
+  ]);
+
   rotateRight() {
     return new Tetromino(this.#currentOrientation + 1, this.#orientations);
   }
