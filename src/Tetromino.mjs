@@ -1,4 +1,4 @@
-import { ArikaRotatingShape } from "./ArikaRotatingShape.mjs";
+import { RotatingShape } from "./RotatingShape.mjs";
 
 export class Tetromino {
   #currentOrientation;
@@ -10,25 +10,25 @@ export class Tetromino {
   }
 
   static T_SHAPE = new Tetromino(0, [
-    ArikaRotatingShape.fromString(
+    RotatingShape.fromString(
       `....
        TTT.
        .T..
        ....`
     ),
-    ArikaRotatingShape.fromString(
+    RotatingShape.fromString(
       `.T..
        TT..
        .T..
        ....`
     ),
-    ArikaRotatingShape.fromString(
+    RotatingShape.fromString(
       `....
        .T..
        TTT.
        ....`
     ),
-    ArikaRotatingShape.fromString(
+    RotatingShape.fromString(
       `.T..
        .TT.
        .T..
@@ -37,13 +37,13 @@ export class Tetromino {
   ]);
 
   static I_SHAPE = new Tetromino(0, [
-    ArikaRotatingShape.fromString(
+    RotatingShape.fromString(
       `....
        IIII
        ....
        ....`
     ),
-    ArikaRotatingShape.fromString(
+    RotatingShape.fromString(
       `..I.
        ..I.
        ..I.
@@ -52,7 +52,7 @@ export class Tetromino {
   ]);
 
   static O_SHAPE = new Tetromino(0, [
-    ArikaRotatingShape.fromString(
+    RotatingShape.fromString(
       `....
        .OO.
        .OO.
