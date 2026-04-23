@@ -93,6 +93,19 @@ export class Board {
     this.#immobile = array;
   }
 
+  setStateFromString(setString) {
+    let array = setString
+      .trim()
+      .split('\n')
+      .map(row => {
+        return row.trim()
+          .split('');
+      })
+
+    this.#immobile = array;
+  }
+
+
   drop(piece) {
     if (this.#falling) {
       throw new Error("already falling");
