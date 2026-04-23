@@ -89,15 +89,13 @@ export class Board {
   setState(setString) {
     let array = setString
       .trim()
-      .split('\n')
-      .map(row => {
-        return row.trim()
-          .split('');
-      })
+      .split("\n")
+      .map((row) => {
+        return row.trim().split("");
+      });
 
     this.#immobile = array;
   }
-
 
   drop(piece) {
     if (this.#falling) {
@@ -225,6 +223,16 @@ export class Board {
       }
     }
     this.#falling = null;
+    this.#checkLines();
+  }
+
+  #checkLines() {
+    for (let rows = 0; rows < this.#immobile.length; rows++) {
+      const row = this.#immobile[rows];
+      if (!row.includes(EMPTY)) {
+        this.#immobile[rows] = new Array(this.#width).fill(EMPTY);
+      }
+    }
   }
 
   hasFalling() {
