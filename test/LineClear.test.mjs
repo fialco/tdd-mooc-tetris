@@ -25,7 +25,7 @@ describe("Line clear", () => {
 
     board.drop(Tetromino.S_SHAPE);
 
-    fallToBottom(board)
+    fallToBottom(board);
 
     expect(board.toString()).to.equalShape(
       `..........
@@ -36,4 +36,8 @@ describe("Line clear", () => {
        ....SS....`
     );
   });
+
+  // TODO: clears two lines
+  // TODO: clears three lines
+  // TODO: clears four lines
 });
