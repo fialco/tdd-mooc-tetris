@@ -230,7 +230,11 @@ export class Board {
     for (let rows = 0; rows < this.#immobile.length; rows++) {
       const row = this.#immobile[rows];
       if (!row.includes(EMPTY)) {
-        this.#immobile[rows] = new Array(this.#width).fill(EMPTY);
+        // Removes full line
+        this.#immobile.splice(rows, 1);
+
+        // Adds empty line on top
+        this.#immobile.unshift(new Array(this.#width).fill(EMPTY));
       }
     }
   }
