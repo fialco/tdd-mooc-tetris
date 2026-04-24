@@ -130,4 +130,78 @@ describe("Line clear", () => {
        ....SS....`
     );
   });
+
+  test("clears two lines, drops remaining blocks, ", () => {
+    board.setState(`..........
+       ..........
+       #........#
+       #..#.....#
+       ####..####
+       ####.#####`);
+
+    board.drop(Tetromino.Z_SHAPE);
+    board.tick();
+    board.rotateRight();
+
+    fallToBottom(board);
+
+    expect(board.toString()).to.equalShape(
+      `..........
+       ..........
+       ..........
+       ..........
+       #........#
+       #..#.Z...#`
+    );
+  });
+
+  test("clears three lines, drops remaining blocks, ", () => {
+    board.setState(`..........
+       ###.......
+       #.#......#
+       ####..####
+       ####.#####
+       ####.#####`);
+
+    board.drop(Tetromino.J_SHAPE);
+    board.tick();
+    board.tick();
+    board.rotateLeft();
+    board.rotateLeft();
+
+    fallToBottom(board);
+
+    expect(board.toString()).to.equalShape(
+      `..........
+       ..........
+       ..........
+       ..........
+       ###.......
+       #.#......#`
+    );
+  });
+
+  test("clears four lines, drops remaining blocks, ", () => {
+    board.setState(`.......#.#
+       ###....#..
+       #####.####
+       #####.####
+       #####.####
+       #####.####`);
+
+    board.drop(Tetromino.I_SHAPE);
+    board.tick();
+    board.rotateLeft();
+
+    fallToBottom(board);
+
+    expect(board.toString()).to.equalShape(
+      `..........
+       ..........
+       ..........
+       ..........
+       .......#.#
+       ###....#..`
+    );
+  });
 });
