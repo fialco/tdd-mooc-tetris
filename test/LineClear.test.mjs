@@ -204,4 +204,31 @@ describe("Line clear", () => {
        ###....#..`
     );
   });
+
+  test("clears hurdle lines, drops remaining blocks, ", () => {
+    // clearing lines with gaps in between is a hurdle
+    // More on: https://tetris.wiki/Line_clear
+    board.setState(`..........
+       ..........
+       ###......#
+       ####..####
+       ##.##.###.
+       #####.####`);
+
+    board.drop(Tetromino.L_SHAPE);
+    board.tick();
+    board.rotateRight();
+    board.moveRight();
+
+    fallToBottom(board);
+
+    expect(board.toString()).to.equalShape(
+      `..........
+       ..........
+       ..........
+       ..........
+       ###......#
+       ##.##L###.`
+    );
+  });
 });
