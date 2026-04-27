@@ -2,6 +2,12 @@ import { beforeEach, describe, test } from "vitest";
 import { expect } from "chai";
 import { ScoringSystem } from "../src/ScoringSystem.mjs";
 
+function getToLevel(level, scoring) {
+  for (let i = 0; i < 10 * level; i++) {
+    scoring.linesCleared(1);
+  }
+}
+
 describe("Scoring system", () => {
   let scoring;
 
@@ -35,5 +41,10 @@ describe("Scoring system", () => {
   test("clearing 4 lines on level 0 scores 1200 points", () => {
     scoring.linesCleared(4);
     expect(scoring.score).to.equal(1200);
+  });
+
+  test("clearing 10 lines levels up to level 1", () => {
+    getToLevel(1, scoring);
+    expect(scoring.level).to.equal(1);
   });
 });
