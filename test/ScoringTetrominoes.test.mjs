@@ -17,7 +17,7 @@ describe("Scoring tetrominoes", () => {
   beforeEach(() => {
     board = new Board(10, 6);
     scoring = new ScoringSystem();
-    board.onLineClear((lineCount) => {
+    board.onClearLine((lineCount) => {
       scoring.linesCleared(lineCount);
     });
   });
@@ -36,6 +36,6 @@ describe("Scoring tetrominoes", () => {
 
     expect(scoring.score).to.equal(40);
     expect(scoring.level).to.equal(0);
-    expect(scoring.totalLines).to.equal(0);
+    expect(scoring.totalLines).to.equal(1);
   });
 });

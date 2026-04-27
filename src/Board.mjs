@@ -76,6 +76,7 @@ export class Board {
   #height;
   #falling = null;
   #immobile;
+  #lineClearListeners = [];
 
   constructor(width, height) {
     this.#width = width;
@@ -231,6 +232,7 @@ export class Board {
     // For example official Tetris browser game on https://play.tetris.com/ uses this
     // More on line clears: https://tetris.wiki/Line_clear
 
+    let lineCount = 0;
     for (let rows = 0; rows < this.#immobile.length; rows++) {
       const row = this.#immobile[rows];
       if (!row.includes(EMPTY)) {
@@ -239,8 +241,22 @@ export class Board {
 
         // Adds empty line on top
         this.#immobile.unshift(new Array(this.#width).fill(EMPTY));
+        lineCount++;
       }
     }
+    if (lineCount > 0) {
+      this.#notifyLineClear(lineCount);
+    }
+  }
+
+  #notifyLineClear(lineCount) {
+    for (const listener of this.#lineClearListeners) {
+      listener(lineCount);
+    }
+  }
+
+  onClearLine(listener) {
+    this.#lineClearListeners.push(listener);
   }
 
   hasFalling() {
