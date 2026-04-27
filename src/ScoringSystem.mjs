@@ -53,4 +53,8 @@ export class ScoringSystem {
   get level() {
     return this.#level;
   }
+
+  get totalLines() {
+    return this.#totalLines;
+  }
 }
