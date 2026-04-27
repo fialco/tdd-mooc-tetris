@@ -96,4 +96,9 @@ describe("Scoring system", () => {
     expect(scoring.level).to.equal(9);
     expect(scoring.score).to.equal(12000);
   });
+
+  test("line count less than 1 or more than 4 throws error", () => {
+    expect(() => scoring.linesCleared(0)).to.throw();
+    expect(() => scoring.linesCleared(5)).to.throw();
+  });
 });

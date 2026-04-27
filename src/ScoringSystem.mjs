@@ -15,6 +15,10 @@ export class ScoringSystem {
   }
 
   linesCleared(lineCount) {
+    if (lineCount < 1 || lineCount > 4) {
+      throw new Error("Line count not valid. Must be between 1 and 4.");
+    }
+
     this.#score += this.#getPointsForLines(lineCount);
     this.#totalLines += lineCount;
     this.#updateLevel();
