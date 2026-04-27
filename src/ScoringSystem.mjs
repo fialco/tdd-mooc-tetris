@@ -10,6 +10,19 @@ export class ScoringSystem {
     this.#level = 0;
   }
 
+  linesCleared(lineCount) {
+    this.#score += this.#getBasePoints(lineCount);
+  }
+
+  #getBasePoints(lineCount) {
+    switch (lineCount) {
+      case 1:
+        return 40;
+      default:
+        return 0;
+    }
+  }
+
   get score() {
     return this.#score;
   }

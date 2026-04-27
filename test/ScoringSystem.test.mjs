@@ -10,10 +10,15 @@ describe("Scoring system", () => {
   });
 
   test("scoring starts from 0", () => {
-    expect(scoring.score).to.be.equal(0);
+    expect(scoring.score).to.equal(0);
   });
 
   test("levels starts from 0", () => {
-    expect(scoring.level).to.be.equal(0);
+    expect(scoring.level).to.equal(0);
+  });
+
+  test("clearing 1 line on level 0 scores 40 points", () => {
+    scoring.linesCleared(1);
+    expect(scoring.score).to.equal(40);
   });
 });
