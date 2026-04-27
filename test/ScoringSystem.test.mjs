@@ -21,4 +21,19 @@ describe("Scoring system", () => {
     scoring.linesCleared(1);
     expect(scoring.score).to.equal(40);
   });
+
+  test("clearing 2 lines on level 0 scores 100 points", () => {
+    scoring.linesCleared(2);
+    expect(scoring.score).to.equal(100);
+  });
+
+  test("clearing 3 lines on level 0 scores 300 points", () => {
+    scoring.linesCleared(3);
+    expect(scoring.score).to.equal(300);
+  });
+
+  test("clearing 4 lines on level 0 scores 1200 points", () => {
+    scoring.linesCleared(4);
+    expect(scoring.score).to.equal(1200);
+  });
 });
