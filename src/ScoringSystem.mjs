@@ -13,4 +13,8 @@ export class ScoringSystem {
   get score() {
     return this.#score;
   }
+
+  get level() {
+    return this.#level;
+  }
 }

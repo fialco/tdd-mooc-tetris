@@ -12,4 +12,8 @@ describe("Scoring system", () => {
   test("scoring starts from 0", () => {
     expect(scoring.score).to.be.equal(0);
   });
+
+  test("levels starts from 0", () => {
+    expect(scoring.level).to.be.equal(0);
+  });
 });
