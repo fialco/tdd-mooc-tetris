@@ -38,4 +38,51 @@ describe("Scoring tetrominoes", () => {
     expect(scoring.level).to.equal(0);
     expect(scoring.totalLines).to.equal(1);
   });
+
+  test("scores 1200 points for clearing four lines at level 0", () => {
+    board.setState(`..........
+       ..........
+       ####.#####
+       ####.#####
+       ####.#####
+       ####.#####`);
+
+    board.drop(Tetromino.I_SHAPE);
+
+    board.tick();
+    board.rotateRight();
+
+    fallToBottom(board);
+
+    expect(scoring.score).to.equal(1200);
+    expect(scoring.level).to.equal(0);
+    expect(scoring.totalLines).to.equal(4);
+  });
+
+  test("scores 3000 points for clearing three lines at level 9", () => {
+    board = new Board(10, 6);
+    scoring = new ScoringSystem(9);
+
+    board.onClearLine((lineCount) => {
+      scoring.linesCleared(lineCount);
+    });
+
+    board.setState(`..........
+       ..........
+       ..........
+       ###..#####
+       ####.#####
+       ####.#####`);
+
+    board.drop(Tetromino.L_SHAPE);
+
+    board.tick();
+    board.rotateRight();
+
+    fallToBottom(board);
+
+    expect(scoring.score).to.equal(3000);
+    expect(scoring.level).to.equal(9);
+    expect(scoring.totalLines).to.equal(3);
+  });
 });

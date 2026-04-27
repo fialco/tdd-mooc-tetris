@@ -68,6 +68,11 @@ describe("Scoring system", () => {
     expect(scoring.score).to.equal(80);
   });
 
+  test("can be set to start from any level", () => {
+    scoring = new ScoringSystem(8);
+    expect(scoring.level).to.equal(8);
+  });
+
   test("clearing 4 lines at level 2 scores 3600 points", () => {
     scoring = new ScoringSystem(2);
     scoring.linesCleared(4);
