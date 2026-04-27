@@ -52,4 +52,12 @@ describe("Scoring system", () => {
     getToLevel(3, scoring);
     expect(scoring.level).to.equal(3);
   });
+
+  test("clearing 1 line at level 1 scores 80 points", () => {
+    scoring.startAtLevel(1);
+    scoring.linesCleared(1);
+
+    expect(scoring.level).to.equal(1);
+    expect(scoring.score).to.equal(80);
+  });
 });
