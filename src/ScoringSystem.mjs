@@ -4,14 +4,18 @@
 export class ScoringSystem {
   #score;
   #level;
+  #totalLines;
 
   constructor() {
     this.#score = 0;
     this.#level = 0;
+    this.#totalLines = 0;
   }
 
   linesCleared(lineCount) {
     this.#score += this.#getBasePoints(lineCount);
+    this.#totalLines += lineCount;
+    this.#updateLevel();
   }
 
   #getBasePoints(lineCount) {
@@ -27,6 +31,10 @@ export class ScoringSystem {
       default:
         return 0;
     }
+  }
+
+  #updateLevel() {
+    this.#level = Math.floor(this.#totalLines / 10);
   }
 
   get score() {

@@ -47,4 +47,9 @@ describe("Scoring system", () => {
     getToLevel(1, scoring);
     expect(scoring.level).to.equal(1);
   });
+
+  test("clearing 30 lines levels up to level 3", () => {
+    getToLevel(3, scoring);
+    expect(scoring.level).to.equal(3);
+  });
 });
