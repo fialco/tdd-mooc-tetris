@@ -3,19 +3,26 @@
 
 export class ScoringSystem {
   #score;
+  #startingLevel;
   #level;
   #totalLines;
 
-  constructor() {
+  constructor(level = 0) {
     this.#score = 0;
-    this.#level = 0;
+    this.#startingLevel = level;
+    this.#level = level;
     this.#totalLines = 0;
   }
 
   linesCleared(lineCount) {
-    this.#score += this.#getBasePoints(lineCount);
+    this.#score += this.#getPointsForLines(lineCount);
     this.#totalLines += lineCount;
     this.#updateLevel();
+  }
+
+  #getPointsForLines(lineCount) {
+    const basePoints = this.#getBasePoints(lineCount);
+    return basePoints * (this.#level + 1);
   }
 
   #getBasePoints(lineCount) {
@@ -33,8 +40,10 @@ export class ScoringSystem {
     }
   }
 
+  // Levels up every with every 10 line clears
+  // Works with any starting level
   #updateLevel() {
-    this.#level = Math.floor(this.#totalLines / 10);
+    this.#level = this.#startingLevel + Math.floor(this.#totalLines / 10);
   }
 
   get score() {

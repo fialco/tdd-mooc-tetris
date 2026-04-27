@@ -54,10 +54,18 @@ describe("Scoring system", () => {
   });
 
   test("clearing 1 line at level 1 scores 80 points", () => {
-    scoring.startAtLevel(1);
+    scoring = new ScoringSystem(1);
     scoring.linesCleared(1);
 
     expect(scoring.level).to.equal(1);
     expect(scoring.score).to.equal(80);
+  });
+
+  test("clearing 4 lines at level 2 scores 3600 points", () => {
+    scoring = new ScoringSystem(2);
+    scoring.linesCleared(4);
+
+    expect(scoring.level).to.equal(2);
+    expect(scoring.score).to.equal(3600);
   });
 });
