@@ -43,10 +43,11 @@ describe("Scoring system", () => {
     expect(scoring.score).to.equal(1200);
   });
 
-  test("total cleared lines are counted correctly", () => {
+  test("total cleared lines and score are counted correctly", () => {
     scoring.linesCleared(4);
     scoring.linesCleared(3);
     expect(scoring.totalLines).to.equal(7);
+    expect(scoring.score).to.equal(1500);
   });
 
   test("clearing 10 lines levels up to level 1", () => {
