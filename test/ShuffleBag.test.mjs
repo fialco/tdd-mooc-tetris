@@ -11,11 +11,11 @@ describe("Shuffle bag", () => {
   });
 
   test("can hold items", () => {
-    expect(Object.keys(bag.bag).length).to.equal(items.length);
+    expect(bag.itemCount).to.equal(items.length);
   });
 
   test("items can be pulled", () => {
     bag.next();
-    expect(Object.keys(bag.bag).length).to.equal(items.length - 1);
+    expect(bag.itemCount).to.equal(items.length - 1);
   });
 });
