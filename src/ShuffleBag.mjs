@@ -1,11 +1,16 @@
 export class ShuffleBag {
+  #original;
   #bag;
 
   constructor(items) {
+    this.#original = [...items];
     this.#bag = [...items];
   }
 
   next() {
+    if (this.itemCount == 0) {
+      this.#bag = [...this.#original];
+    }
     return this.#bag.pop();
   }
 
