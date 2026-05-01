@@ -3,9 +3,11 @@ import { expect } from "chai";
 import { ShuffleBag } from "../src/ShuffleBag.mjs";
 
 function pullItems(bag, count) {
+  const items = [];
   for (let i = 0; i < count; i++) {
-    bag.next();
+    items.push(bag.next());
   }
+  return items;
 }
 
 describe("Shuffle bag", () => {
@@ -28,9 +30,16 @@ describe("Shuffle bag", () => {
   });
 
   test("refills after pulling all items", () => {
-    pullItems(bag, 8);
-    expect(bag.itemCount).to.equal(items.length - 8);
+    const items = pullItems(bag, bag.itemCount);
+    expect(bag.itemCount).to.equal(0);
     bag.next();
     expect(bag.itemCount).to.equal(items.length - 1);
+  });
+
+  test("pulls items in random order", () => {
+    const firstSet = pullItems(bag, bag.originalItemCount);
+    const secondSet = pullItems(bag, bag.originalItemCount);
+
+    expect(firstSet).to.not.deep.equal(secondSet);
   });
 });
