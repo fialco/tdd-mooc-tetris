@@ -59,4 +59,13 @@ describe("Shuffle bag", () => {
 
     expect(firstSet).to.deep.equal(secondSet);
   });
+
+  test("pull order is different with different seeds", () => {
+    const firstBag = new ShuffleBag(items, seededRandom(1234));
+    const secondBag = new ShuffleBag(items, seededRandom(1235));
+    const firstSet = pullItems(firstBag, firstBag.originalItemCount);
+    const secondSet = pullItems(secondBag, secondBag.originalItemCount);
+
+    expect(firstSet).to.not.deep.equal(secondSet);
+  });
 });
