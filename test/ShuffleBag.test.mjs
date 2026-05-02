@@ -20,7 +20,7 @@ const seededRandom = (seed) => {
 
 describe("Shuffle bag", () => {
   let bag;
-  let items = ["I", "T", "L", "J", "T", "S", "Z", "O"];
+  let items = ["I", "T", "L", "J", "S", "Z", "O"];
 
   beforeEach(() => {
     bag = new ShuffleBag(items);
