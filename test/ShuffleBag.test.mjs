@@ -52,10 +52,8 @@ describe("Shuffle bag", () => {
   });
 
   test("pull order can be fixed with a seed", () => {
-    let firstBag;
-    let secondBag;
-    firstBag = new ShuffleBag(items, seededRandom(1234));
-    secondBag = new ShuffleBag(items, seededRandom(1234));
+    const firstBag = new ShuffleBag(items, seededRandom(1234));
+    const secondBag = new ShuffleBag(items, seededRandom(1234));
     const firstSet = pullItems(firstBag, firstBag.originalItemCount);
     const secondSet = pullItems(secondBag, secondBag.originalItemCount);
 

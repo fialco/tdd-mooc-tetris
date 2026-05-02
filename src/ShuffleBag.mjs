@@ -2,9 +2,10 @@ export class ShuffleBag {
   #original;
   #bag;
 
-  constructor(items) {
+  constructor(items, randomFunc = Math.random) {
     this.#original = [...items];
     this.#bag = [...items];
+    this.randomFunc = randomFunc;
     this.shuffle();
   }
 
@@ -20,7 +21,7 @@ export class ShuffleBag {
   // https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#JavaScript_implementation
   shuffle() {
     for (let i = this.#bag.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
+      const j = Math.floor(this.randomFunc() * (i + 1));
       [this.#bag[i], this.#bag[j]] = [this.#bag[j], this.#bag[i]];
     }
   }
