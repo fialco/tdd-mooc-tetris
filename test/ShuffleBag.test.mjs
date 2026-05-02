@@ -69,6 +69,18 @@ describe("Shuffle bag", () => {
     expect(firstSet).to.not.deep.equal(secondSet);
   });
 
+  test("no item in bag after pull", () => {
+    const bag = new ShuffleBag(items, seededRandom(1234));
+    const itemsBefore = bag.content;
+    expect(itemsBefore).to.include("I");
+
+    const item = bag.next();
+    expect(item).to.equal("I");
+
+    const itemsAfter = bag.content;
+    expect(itemsAfter).to.not.include("I");
+  });
+
   test("10 bag pull cycles pulls all items exactly 10 times", () => {
     const pulls = pullItems(bag, bag.originalItemCount * 10);
 

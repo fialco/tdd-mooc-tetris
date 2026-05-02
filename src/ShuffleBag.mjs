@@ -30,6 +30,10 @@ export class ShuffleBag {
     return this.#bag.length;
   }
 
+  get content() {
+    return this.#bag;
+  }
+
   get originalItemCount() {
     return this.#original.length;
   }
