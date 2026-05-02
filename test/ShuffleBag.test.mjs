@@ -68,4 +68,17 @@ describe("Shuffle bag", () => {
 
     expect(firstSet).to.not.deep.equal(secondSet);
   });
+
+  test("10 bag pull cycles pulls all items exactly 10 times", () => {
+    const pulls = pullItems(bag, bag.originalItemCount * 10);
+
+    let pullCounts = pulls.reduce((acc, curr) => {
+      acc[curr] = (acc[curr] || 0) + 1;
+      return acc;
+    }, {});
+
+    for (const pull in pullCounts) {
+      expect(pullCounts[pull]).to.equal(10);
+    }
+  });
 });
