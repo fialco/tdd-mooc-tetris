@@ -10,6 +10,14 @@ function pullItems(bag, count) {
   return items;
 }
 
+// random with seed: https://javascript.info/task/pseudo-random-generator
+const seededRandom = (seed) => {
+  return () => {
+    seed = (seed * 1337) % 64278921357;
+    return seed / 64278921357;
+  };
+};
+
 describe("Shuffle bag", () => {
   let bag;
   let items = ["I", "T", "L", "J", "T", "S", "Z", "O"];
@@ -41,5 +49,16 @@ describe("Shuffle bag", () => {
     const secondSet = pullItems(bag, bag.originalItemCount);
 
     expect(firstSet).to.not.deep.equal(secondSet);
+  });
+
+  test("pull order can be fixed with a seed", () => {
+    let firstBag;
+    let secondBag;
+    firstBag = new ShuffleBag(items, seededRandom(1234));
+    secondBag = new ShuffleBag(items, seededRandom(1234));
+    const firstSet = pullItems(firstBag, firstBag.originalItemCount);
+    const secondSet = pullItems(secondBag, secondBag.originalItemCount);
+
+    expect(firstSet).to.deep.equal(secondSet);
   });
 });
